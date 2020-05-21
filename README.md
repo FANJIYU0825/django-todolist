@@ -160,3 +160,50 @@ add the  dirs we need
 
 'DIRS': [os.path.join(BASE_DIR,'templates')],
 ```
+
+
+## step five 
+
+add the db for django
+
+typing
+`python manage.py makemigrations`
+
+in terminal you will get
+```
+Migrations for 'visiter':
+visiter\migrations\0001_initial.py
+ - Create model visiterItem
+```
+
+type
+`python manage.py migrate`
+
+
+ this conmand is to tell db  to create table
+```
+Running migrations:
+  Applying sessions.0001_initial... OK
+  Applying visiter.0001_initial... OK
+```
+
+typing
+`python manage.py shell`
+
+
+you will get in the shell
+`>>> is the thing you need to typing`
+```
+>>>from visiter.models import {classname}
+>>> {classname}
+<class 'visiter.models.visiterItem'>
+    
+>>> {classname}.objects.all()
+not guery data yet nothing in db
+<QuerySet []>
+
+>>>a = xxx(content = 'perment todo item A')
+>>> a 
+<xxxItem object (None)>
+>>>a.save()
+```
