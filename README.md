@@ -104,6 +104,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('photo/', myView),
 ]
+```
 
 type same
 
