@@ -106,16 +106,16 @@ Including another URLconf
 
 
 and add in url /wedding
-```
-from django.contrib import admin
-from django.urls import path
-from photo.views import myView
+    ```
+    from django.contrib import admin
+    from django.urls import path
+    from photo.views import myView
 
-urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('photo/', myView),
-]
-```
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('photo/', myView),
+    ]
+    ```
 
 type same
 
