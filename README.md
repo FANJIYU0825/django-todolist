@@ -106,7 +106,9 @@ Including another URLconf
 
 
 and add in url /wedding
-    ```
+
+
+
     from django.contrib import admin
     from django.urls import path
     from photo.views import myView
@@ -115,7 +117,7 @@ and add in url /wedding
         path('admin/', admin.site.urls),
         path('photo/', myView),
     ]
-    ```
+
 
 type same
 
