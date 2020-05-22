@@ -1,98 +1,64 @@
-## step five 
+## step six
 
-add the db for django
-
-typing
-`python manage.py makemigrations`
-
-in terminal you will get
+**we add buttom  html**
 ```
-Migrations for 'visiter':
-visiter\migrations\0001_initial.py
- - Create model visiterItem
+<!---out_zone reuqest--->
+<form action="/addvisiter/" method="POST">{% csrf_token %}
+
+    <input type="text" name="content"/>
+    <input type="submit" value="Add">
+</form>
 ```
-
-type
-`python manage.py migrate`
-
-
- this conmand is to tell db  to create table
+add  def() `app/views.py`
 ```
-Running migrations:
-  Applying sessions.0001_initial... OK
-  Applying visiter.0001_initial... OK
+def addvisiter (request):
+    new_item = visiterItem (content = request.POST['content'])
+    new_item.save()
+    return HttpResponsePermanentRedirect('/visiter/')
 ```
-
-typing
-`python manage.py shell`
-
-
-you will get in the shell
-`>>> is the thing you need to typing`
-`/app/models.visiterItem`
+add urlpatterns `project/url.py`
 ```
->>>from visiter.models import visiterItem
->>> visiterItem
-<class 'visiter.models.visiterItem'>
-    
->>> visiterItem.objects.all()
-not guery data yet nothing in db
-<QuerySet []>
-
->>>a = visiterItem(content = 'perment todo item A')
->>> a 
-<xxxItem object (None)>
->>>a.save()
->>>b = visiterItem(content = 'perment todo item B')
->>> b 
-<xxxItem object (None)>
->>>b.save()
-
->>> visiterItem.objects.all()
-<QuerySet [<visiterItem: visiterItem object (1)>]>
+urlpatterns = [....
+path('addvisiter/',addvisiter)]
 ```
 
-try to add verable of all_visiterItems
-```
->>>all_visiterItems = visiterItem.objects.all()
+**we delete buttom  html**
 
-```
-content
-```
->>> all_visiterItems[0].content
-'perment todo item A'
-```
-
-id get
-```
->>> visiterItem.objects.get(id=1)
-<visiterItem: visiterItem object (1)>
->>> temp =visiterItem.objects.get(id=1)
->>> temp.content
-'perment todo item A'
-```
-
-we go to visiter/views.py 
-add this
-```
-from .models import visiterItem
-
-def visiter_see(request):
-     #
-    all_todo_items = visiterItem.objects.all()
-    return render(request,'visiter.html',
-    #let items can call items we need
-    {'all_items':all_todo_items}
-    )
-```
-add to templates jinja language
+add in for loop of item 
 ```
 <ul>
     {% for todo_item in all_items %}
-    <li>{{ todo_item.content }}</li>
+    
+    <li>{{ todo_item.content }}
+      <!--we will add delete butttom here--->
+
+    </li>
     {% endfor %}
 </ul>
 ```
+
+add delete form here
+
+```
+        <form action="/deletevisiter/{{todo_item.id}}" method="POST">{% csrf_token %}
+            <input type="submit" value="Delete"/>  
+        </form>
+```
+
+add  a def() `app/views.py` 
+```
+def deletevisiter (request,todo_id):
+    item_delete = visiterItem.objects.get(id = todo_id)
+    item_delete.delete()
+    return HttpResponsePermanentRedirect('/visiter/')
+```
+
+add in urlpatterns `project/url.py`
+```
+urlpatterns = [....
+path('deletevisiter/',deletevisiter)]
+```
+
 run the server and we see the db in html
 `python manage.py runserver`
 http://127.0.0.1:8000/visiter/
