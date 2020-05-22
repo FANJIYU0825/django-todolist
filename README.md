@@ -58,3 +58,12 @@ content
 >>> all_visiterItems[0].content
 'perment todo item A'
 ```
+
+id get
+```
+>>> visiterItem.objects.get(id=1)
+<visiterItem: visiterItem object (1)>
+>>> temp =visiterItem.objects.get(id=1)
+>>> temp.content
+'perment todo item A'
+```
