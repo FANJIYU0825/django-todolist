@@ -15,11 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
+
 from photo.views import index
-from visiter.views import visiter_see
+from visiter.views import visiter_see,addvisiter,deletevisiter
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('photo/', index),
     path('visiter/',visiter_see),
+    path('addvisiter/',addvisiter),
+    path('deletevisiter/<int:todo_id>',deletevisiter),
 ]
