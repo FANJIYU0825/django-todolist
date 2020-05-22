@@ -49,26 +49,3 @@ you if you typing
 Starting development server at http://127.0.0.1:8000/
 Quit the server with CTRL-BREAK.
 ```
-## thir step(start an app )
-
-**one project can have many app**
-`python manage.py startapp polls`
-
-That’ll create a directory polls, which is laid out like this:
-```
-polls/
-    __init__.py
-    admin.py
-    apps.py
-    migrations/
-        __init__.py
-    models.py
-    tests.py
-    views.py
-
-```
-
-
-
-
-#
