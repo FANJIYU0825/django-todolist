@@ -1,9 +1,10 @@
 from django.shortcuts import render
-
-# Create your views here.
 from django.http import HttpResponse
+from .models import visiterItem
+
+
 
 
 def visiter_see(request):
-
-    return render(request,'visiter.html')
+    all_visiterItems = visiterItem.objects.all()
+    return render(request,'visiter.html',{'all_items':all_visiterItems})

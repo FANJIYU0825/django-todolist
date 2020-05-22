@@ -1,7 +1,8 @@
 <h1>well come to the wedding</h1>
 
 <ul>
-    save wedding
-    <img src="" alt="">
+    {% for todo_item in all_items %}
+    <li>{{ todo_item.content }}</li>
+    {% endfor %}
 </ul>
 

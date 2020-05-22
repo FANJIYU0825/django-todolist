@@ -43,6 +43,10 @@ not guery data yet nothing in db
 >>> a 
 <xxxItem object (None)>
 >>>a.save()
+>>>b = visiterItem(content = 'perment todo item B')
+>>> b 
+<xxxItem object (None)>
+>>>b.save()
 
 >>> visiterItem.objects.all()
 <QuerySet [<visiterItem: visiterItem object (1)>]>
@@ -67,3 +71,28 @@ id get
 >>> temp.content
 'perment todo item A'
 ```
+
+we go to visiter/views.py 
+add this
+```
+from .models import visiterItem
+
+def visiter_see(request):
+     #
+    all_todo_items = visiterItem.objects.all()
+    return render(request,'visiter.html',
+    #let items can call items we need
+    {'all_items':all_todo_items}
+    )
+```
+add to templates jinja language
+```
+<ul>
+    {% for todo_item in all_items %}
+    <li>{{ todo_item.content }}</li>
+    {% endfor %}
+</ul>
+```
+run the server and we see the db in html
+`python manage.py runserver`
+http://127.0.0.1:8000/visiter/
