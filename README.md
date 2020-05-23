@@ -1,5 +1,16 @@
 # setting django 
+## branch know
+Here is my branch
 
+| branch name    |    hint    |  mistake|
+| :---       | :----:     | :----:|
+| master     | first push | env problem |
+| photo_app  | new_app    | the path setting   |
+| template   | html view  |class set |
+| db_add     | db install |  db conmand learn|    
+
+**Is my first time to learn the branch 
+and know why the brnach is importent**
 ## first step(use by env)
 
 open terminal
